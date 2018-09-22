@@ -4,14 +4,21 @@ console.log('Starting app.js');
 const fs = require('fs');
 const os = require('os');
 const notes = require('./notes.js')
+const _ =require('lodash')
 
 // var res = notes.addNote();
 // console.log(res);
 
-var notesAdd = notes.add(5, 6);
-console.log(notesAdd)
+// console.log(_.isString(5))
+// console.log(_.isString('5'))
 
-console.log('Better code: ', notes.add(100, -49))
+var tilteredArray = _.uniq(['bob', 1, 'bob', 1, 2, 3, 4])
+console.log(tilteredArray)
+
+// var notesAdd = notes.add(5, 6);
+// console.log(notesAdd)
+//
+// console.log('Better code: ', notes.add(100, -49))
 
 // var user = os.userInfo();
 //
