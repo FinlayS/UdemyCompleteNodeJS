@@ -13,15 +13,28 @@ console.log('YARGS:', argv);
 
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body) === undefined
-        ? console.log('Note', JSON.stringify(argv.title), 'not added, already exists!')
-        : console.log('Note', JSON.stringify(argv.title), 'added!')
+    var note = notes.addNote(argv.title, argv.body)
+    if (note) {
+        console.log('Note added')
+        notes.logNote(note)
+    }else{
+        console.log('Note already exists')
+    }
+
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if (note) {
+        console.log('Note found')
+        notes.logNote(note)
+    } else {
+        console.log('Note not found')
+    }
+
+
 } else if (command === 'remove') {
-    var noteRemoved = notes.removeNote(argv.title)
+    var noteRemoved = notes.removeNote(argv.title);
     var message = noteRemoved ? 'note was removed' : 'Note not found';
     console.log(message)
 }
