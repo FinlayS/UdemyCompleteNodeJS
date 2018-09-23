@@ -1,6 +1,8 @@
 console.log('Starting notes.js');
 
 const fs = require('fs');
+const _ = require('lodash');
+const yargs = require('yargs');
 
 var fetchNotes = () => {
     try {
@@ -24,7 +26,6 @@ var addNote = (title, body) => {
       title,
        body
    };
-   fetchNotes()
    var duplicateNotes  = notes.filter((note) => note.title ===title);
    if (duplicateNotes.length === 0) {
        notes.push(note);
@@ -44,8 +45,15 @@ var getNote = (title) => {
 };
 
 var removeNote = (title) => {
-    console.log('Removing note', title);
-
+    var notes = fetchNotes();
+    var note = {
+        title
+    };
+    var noteRemoved = _.remove(notes, item => item.title ===title);
+    noteRemoved.length === 0
+        ? console.log('Note', JSON.stringify(note.title), 'not found, not removed!!')
+        : console.log('Note', JSON.stringify(note.title), 'removed!');
+         saveNotes(notes)
 };
 
 module.exports = {
