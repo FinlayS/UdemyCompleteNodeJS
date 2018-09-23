@@ -13,7 +13,9 @@ console.log('YARGS:', argv);
 
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    notes.addNote(argv.title, argv.body) === undefined
+        ? console.log('Note', JSON.stringify(argv.title), 'not added, already exists!')
+        : console.log('Note', JSON.stringify(argv.title), 'added!')
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
