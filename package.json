@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FinlayS/UdemyCompleteNodeJS#readme",
   "dependencies": {
     "lodash": "^4.17.11",
+    "nodemon": "^1.18.4",
     "yargs": "^4.7.1"
   }
 }

@@ -1,8 +1,4 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
-// const _ = require('lodash');
-// const yargs = require('yargs');
 
 var fetchNotes = () => {
     try {
@@ -13,12 +9,10 @@ var fetchNotes = () => {
     }
 };
 
-
 var saveNotes = (notes) => {
     fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 
 }
-
 
 var addNote = (title, body) => {
    var notes = fetchNotes();
@@ -35,7 +29,7 @@ var addNote = (title, body) => {
 }
 
 var getAll = () => {
- console.log('Getting all notes')
+ return fetchNotes()
 
 }
 
@@ -52,7 +46,9 @@ var removeNote = (title) => {
     return notes.length !== filteredNotes.length;
 };
 
+
 var logNote = (note) => {
+    debugger;
     console.log('--')
     console.log(`Title: ${note.title}`)
     console.log(`Body: ${note.body}`)
